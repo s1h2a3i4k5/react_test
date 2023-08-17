@@ -1,3 +1,7 @@
+we want to push  minifiled file to the production then we need to use 
+npm run build
+npm run start //to start the project app or to see the output
+
 # parcel
 Dev Bulid
 local server
