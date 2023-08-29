@@ -1,0 +1,2 @@
+export const SITE_HEADER_URL = "https://onlytech.com/wp-content/uploads/2020/07/Swiggy-Logo.jpg"
+export const RESTRO_PROD_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"

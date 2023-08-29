@@ -7,12 +7,42 @@
     padding: 20px;
     
 }
-.content{
+/* .content{
     background-color:rgb(185, 117, 28);
     height: 300px;
     padding: 20px;
-}
+} */
 .footer{
-    background-color: green;
+    background-color: wheat;
+    text-align: center;
     padding: 20px;
+}
+ i{
+    padding:8px;
+}
+nav{
+    background-color: white;
+}
+/* li input{
+    display: none;
+} */
+/* .name{
+    border:2px solid red;
+}  */
+  /* .rest_flex{
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+    grid-gap: 2rem; 
+     column-gap: 2rem; 
+     grid-template-rows: repeat(3, 10%);
+    grid-auto-rows: 20%;
+}  */   
+/* .rest_flex{
+    display: grid;
+    grid-template-columns: repeat(auto-fit ,minmax(300px,4fr));
+    grid-gap: 1rem;
+} */
+
+#root{
+    background-color:whitesmoke
 }
