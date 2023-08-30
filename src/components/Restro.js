@@ -10,16 +10,17 @@ const RestoComponent = (props) => {
         <div className="resto">
             <div className="card">
 
-                <img src={RESTRO_PROD_URL+restroData.info.cloudinaryImageId} height="200px" />
+                <img src={RESTRO_PROD_URL + restroData.cloudinaryImageId} height="200px" />
                 {/* <img src = {RESTRO_PROD_URL+props.restroData_image} height="200px" />//second method  */}
                 <div className="card-body">
-                    <h2>{restroData.info.name}</h2>
-                    <p>{restroData.info.avgRating}<i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></p>
-                    <p>{restroData.info.areaName}</p>
-                    <p>{restroData.info.cuisines.join(",")}</p>
 
+                    <h2>{restroData.name}</h2>
+                    <p>{restroData.avgRating}<i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></p>
+                    <p>{restroData.areaName}</p>
+                    <p>{restroData.cuisines.join(",")}</p>
 
-{/* <------------------------------Second method of map props-----------------------------> */}
+                    
+                    {/* <------------------------------Second method of map props-----------------------------> */}
                     {/* <h2>{props.restroData_name}</h2>
                     <p>{props.restroData_avg}<i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></p>
                     <p>{props.restroData_areaName}</p> 

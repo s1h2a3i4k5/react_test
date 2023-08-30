@@ -3,7 +3,7 @@
 }
 
 .header{
-    background-color:#FB607F;
+    /* background-color:#FB607F; */
     padding: 20px;
     
 }
@@ -23,12 +23,7 @@
 nav{
     background-color: white;
 }
-/* li input{
-    display: none;
-} */
-/* .name{
-    border:2px solid red;
-}  */
+
   /* .rest_flex{
     display: grid;
     grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
@@ -46,3 +41,12 @@ nav{
 #root{
     background-color:whitesmoke
 }
+.card-shimmer{
+    height: 300px;
+    width:300px;
+    background-color: #FB607F;
+    margin: 2px;
+}
+/* .container-shimmer{
+    display: flex;
+} */
