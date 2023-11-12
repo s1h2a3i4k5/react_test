@@ -1,6 +1,9 @@
-import RestoComponent from "./Restro";
+import RestoComponent, { withoneFreeDelivery } from "./Restro";
 import BestoffersComponent from "./Bestoffers";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
+import UserContext from "../utilises/UserContext";
+
+import { Link } from "react-router-dom";
 import Shimmer from "./shimmer";
 // import restorent_Data from "../utilises/mockdata";
 // import bestoffer_Data from "../utilises/mockdata";
@@ -44,9 +47,13 @@ const bestoffer_Data = [
 
 
 const Bodycomponent = () => {
-
+    // const Userdetails = useContext(UserContext)
     //Whenever we update the state variable(restorent_Data,filteredrestrant)-React automatically will do Re-rendering the entire Body component
-    const [restorent_Data, filteredrestrant] = useState([]);
+    const [restorent_Data, filteredrestrant] = useState([]);//restrant data usestate
+    const [parentdata,updateparentdata] = useState([]);
+    const [searchtext, updatesearchtext] = useState("");
+    const [avgrating,Setavgrating] = useState([])
+    const Restro_onefreedeveliy_Label = withoneFreeDelivery(RestoComponent)/** HOF Formate same as another component <withoneFreeDelivery/> */
 
     useEffect(() => {
         fetch_data()
@@ -56,7 +63,7 @@ const Bodycomponent = () => {
         const res_data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.385044&lng=78.486671&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
         const original_data = await res_data.json();
         //console.log(original_data)
-        // const api_data = original_data.data.cards[2].card.card.gridElements.infoWithStyle.restaurants;
+        //const api_data = original_data.data.cards[2].card.card.gridElements.infoWithStyle.restaurants;
         const api_raw_data =
 
             [
@@ -68,6 +75,7 @@ const Bodycomponent = () => {
                     locality: "Chikkadpally",
                     areaName: "New Nallakunta",
                     costForTwo: "₹300 for two",
+                    oneFreeDelivery: true,
                     cuisines: [
                         "Biryani",
                         "Tandoor",
@@ -152,6 +160,7 @@ const Bodycomponent = () => {
                     locality: "Abids",
                     areaName: "Abids",
                     costForTwo: "₹300 for two",
+                    oneFreeDelivery: true,
                     cuisines: [
                         "Biryani",
                         "Chinese",
@@ -236,6 +245,7 @@ const Bodycomponent = () => {
                     locality: "Banjara Hills",
                     areaName: "MasabTank",
                     costForTwo: "₹300 for two",
+                    oneFreeDelivery: false,
                     cuisines: [
                         "Biryani",
                         "North Indian",
@@ -319,6 +329,7 @@ const Bodycomponent = () => {
                     locality: "Santh Nirankari Satsang Bhavan",
                     areaName: "Lakdikapul",
                     costForTwo: "₹350 for two",
+                    oneFreeDelivery: true,
                     cuisines: [
                         "Biryani",
                         "Chinese",
@@ -403,6 +414,7 @@ const Bodycomponent = () => {
                     cloudinaryImageId: "ijy2jxi7lfwsebdtazpi",
                     areaName: "Malakpet",
                     costForTwo: "₹500 for two",
+                    oneFreeDelivery: true,
                     cuisines: [
                         "Biryani",
                         "Arabian",
@@ -486,6 +498,7 @@ const Bodycomponent = () => {
                     locality: "Road 11",
                     areaName: "Banjara Hills",
                     costForTwo: "₹400 for two",
+                    oneFreeDelivery: false,
                     cuisines: [
                         "Biryani",
                         "Chinese",
@@ -569,6 +582,7 @@ const Bodycomponent = () => {
                     locality: "Punjagutta Road",
                     areaName: "Punjagutta",
                     costForTwo: "₹250 for two",
+                    oneFreeDelivery: true,
                     cuisines: [
                         "Andhra",
                         "Seafood"
@@ -648,6 +662,7 @@ const Bodycomponent = () => {
                     locality: "saidabad x road",
                     areaName: "Malakpet",
                     costForTwo: "₹400 for two",
+                    oneFreeDelivery: true,
                     cuisines: [
                         "Biryani",
                         "Chinese",
@@ -733,6 +748,7 @@ const Bodycomponent = () => {
                     locality: "Himayath Nagar",
                     areaName: "Himayatnagar",
                     costForTwo: "₹350 for two",
+                    oneFreeDelivery: false,
                     cuisines: [
                         "Burgers",
                         "American"
@@ -815,6 +831,7 @@ const Bodycomponent = () => {
                     locality: "Lakdikapul",
                     areaName: "Redhills",
                     costForTwo: "₹150 for two",
+                    oneFreeDelivery: true,
                     cuisines: [
                         "Bakery",
                         "Beverages",
@@ -896,6 +913,7 @@ const Bodycomponent = () => {
                     locality: "ABITS MPM MALL",
                     areaName: "Abids & Koti",
                     costForTwo: "₹400 for two",
+                    oneFreeDelivery: true,
                     cuisines: [
                         "Burgers",
                         "Beverages",
@@ -981,6 +999,7 @@ const Bodycomponent = () => {
                     locality: "Liberty Road",
                     areaName: "Basheer Bagh",
                     costForTwo: "₹350 for two",
+                    oneFreeDelivery: false,
                     cuisines: [
                         "Ice Cream",
                         "Desserts",
@@ -1085,6 +1104,7 @@ const Bodycomponent = () => {
                     locality: "Mahatma Gandhi Bus Station",
                     areaName: "Malakpet",
                     costForTwo: "₹400 for two",
+                    oneFreeDelivery: true,
                     cuisines: [
                         "Biryani",
                         "Kebabs",
@@ -1170,6 +1190,7 @@ const Bodycomponent = () => {
                     locality: "KMIT",
                     areaName: "Narayanguda",
                     costForTwo: "₹120 for two",
+                    oneFreeDelivery: true,
                     cuisines: [
                         "Ice Cream",
                         "Desserts"
@@ -1337,6 +1358,7 @@ const Bodycomponent = () => {
                     locality: "Hanuman Tekdi",
                     areaName: "Koti",
                     costForTwo: "₹300 for two",
+                    oneFreeDelivery: false,
                     cuisines: [
                         "North Indian",
                         "Biryani",
@@ -1424,6 +1446,7 @@ const Bodycomponent = () => {
                     locality: "Mahatee Niketan Apartments",
                     areaName: "Himayath Nagar",
                     costForTwo: "₹300 for two",
+                    oneFreeDelivery: true,
                     cuisines: [
                         "Pan-Asian",
                         "Continental",
@@ -1527,6 +1550,7 @@ const Bodycomponent = () => {
                     locality: "Abids Road",
                     areaName: "Basheer Bagh",
                     costForTwo: "₹400 for two",
+                    oneFreeDelivery: true,
                     cuisines: [
                         "Burgers",
                         "Biryani",
@@ -1611,6 +1635,7 @@ const Bodycomponent = () => {
                     locality: "Saleem Nagar",
                     areaName: "Old Malakpet",
                     costForTwo: "₹400 for two",
+                    oneFreeDelivery: false,
                     cuisines: [
                         "Bakery",
                         "Pizzas",
@@ -1696,6 +1721,7 @@ const Bodycomponent = () => {
                     locality: "Mahatee Niketan Apartments",
                     areaName: "Himayath Nagar",
                     costForTwo: "₹250 for two",
+                    oneFreeDelivery: true,
                     cuisines: [
                         "Mediterranean",
                         "Snacks",
@@ -1800,9 +1826,11 @@ const Bodycomponent = () => {
                 }
             ]
          
-         filteredrestrant(api_raw_data);//[{}]
+        filteredrestrant(api_raw_data);//[{}]
         //filteredrestrant(api_data)//api data 
         //console.log(filteredrestrant)
+         updateparentdata(api_raw_data);
+         Setavgrating(api_raw_data);
     }
 
     //conditional Rendering
@@ -1815,7 +1843,7 @@ const Bodycomponent = () => {
 
         <div className="container body mt-5">
             <div className="row">
-                <h2 className="m-3">Best offers for you</h2>
+                <h2 className="">Best offers for you</h2>
                 <div className="col-lg-4">
                     <BestoffersComponent
                         bestofferData={bestoffer_Data[0]}
@@ -1834,14 +1862,34 @@ const Bodycomponent = () => {
             </div>
 
             {/* <----------------------Filter method for Button---------------> */}
-            <div className="row">
-                <div className=" col-lg-4 m-4">
+            <div className="row pt-5">
+                <div className="col">
                     <button className="top_restro" onClick={() => {
-                        let restro_filter = restorent_Data.filter((toprestrant) => (toprestrant.avgRating > 4))
+                        let restro_filter = avgrating.filter((toprestrant) => (toprestrant.avgRating > 4))
                         filteredrestrant(restro_filter)
-                        //console.log(restro_filter)
+                        console.log(restro_filter)
                         // console.log("Button clicked")
                     }}>Top Rated Restaurants</button>
+                   
+                    <button className="top_restro" onClick={() => {
+                        let Parent_ID = parentdata.filter((toprestrant) => (toprestrant.parentId =="100"))
+                        filteredrestrant(Parent_ID)
+                        console.log(Parent_ID)
+                        // console.log("Button clicked")
+                    }}>Top Rated parent ID</button>
+                     
+
+                    <div className="col-lg-4 pt-3">
+                        <input className="search" value={searchtext} onChange={(e) => {
+                            updatesearchtext(e.target.value)
+                        }} />
+                        <button className="" onClick={() => {
+                            //  alert(searchtext)
+                            const usersearchdata = restorent_Data.filter((searchdata) => (searchdata.name.toLowerCase().includes(searchtext.toLowerCase())))
+                            filteredrestrant(usersearchdata)
+                        }}>Search</button>
+
+                    </div>
                 </div>
             </div>
 
@@ -1851,16 +1899,25 @@ const Bodycomponent = () => {
             {/* <---------------------------Restaurants near me----------------------> */}
             <div className="row">
 
-                <h2>Restaurants With Great Offers Near Me</h2>
-                <div className="col-lg-4 p-3 ">
+                <h2 className="pt-4">Restaurants With Great Offers Near Me</h2>
 
-                    {restorent_Data.map((restrant) => (<RestoComponent restroData={restrant} />))
-                    }
 
-                    {/* {restorent_Data.map((restrant) => {return <RestoComponent restroData={restrant} />})
+                {restorent_Data.map((restrant) =>
+
+                (<div className="col-lg-4">
+                    <Link to={"Restromenu/" + restrant.id} style={{ textDecoration: "none" }}>
+                        {
+                            restrant.oneFreeDelivery ? <Restro_onefreedeveliy_Label restroData={restrant} /> : <RestoComponent restroData={restrant} />
+                        }
+                    </Link>
+                </div>))
+
+
+                }
+                {/* {restorent_Data.map((restrant) => {return <RestoComponent restroData={restrant} />})
                     };  */}
 
-                    {/* {restorent_Data.map((restrant) => (<RestoComponent
+                {/* {restorent_Data.map((restrant) => (<RestoComponent
                         restroData_image={restrant.info.cloudinaryImageId}
                         restroData_name={restrant.info.name}
                         restroData_avg={restrant.info.avgRating}
@@ -1869,7 +1926,7 @@ const Bodycomponent = () => {
 
                     />))
                     };  */}
-                </div>
+
 
             </div>
 

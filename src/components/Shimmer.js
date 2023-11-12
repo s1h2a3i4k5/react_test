@@ -3,13 +3,13 @@ const Shimmer = () => {
         <div className="container">
             <div className="row">
                 <div className="col-lg-4 ">
-                    <div className=" card card-shimmer">card</div>
+                    <div className="card card-shimmer"></div>
                 </div>
                 <div className="col-lg-4 ">
-                    <div className=" card card-shimmer">card</div>
+                    <div className=" card card-shimmer"></div>
                 </div>
                 <div className="col-lg-4 ">
-                    <div className=" card card-shimmer">card</div>
+                    <div className=" card card-shimmer"></div>
                 </div>
 
 

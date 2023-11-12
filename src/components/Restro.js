@@ -4,7 +4,7 @@ import { RESTRO_PROD_URL } from "../utilises/constant";
 
 const RestoComponent = (props) => {
     const { restroData } = props;// inside the object {} getting without restrodata
-    console.log(restroData);
+    //console.log(restroData);
 
     return (
         <div className="resto">
@@ -12,7 +12,7 @@ const RestoComponent = (props) => {
 
                 <img src={RESTRO_PROD_URL + restroData.cloudinaryImageId} height="200px" />
                 {/* <img src = {RESTRO_PROD_URL+props.restroData_image} height="200px" />//second method  */}
-                <div className="card-body">
+                <div className="card-body" height="50vh">
 
                     <h2>{restroData.name}</h2>
                     <p>{restroData.avgRating}<i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></p>
@@ -31,5 +31,16 @@ const RestoComponent = (props) => {
         </div>
 
     )
+}
+
+export const withoneFreeDelivery = (RestoComponent) =>{
+    return(props)=>{
+        return(
+          <div className="text-overlay">
+            <label >One Free Delivery</label>
+            <RestoComponent {...props}/>
+          </div>
+        )
+    }
 }
 export default RestoComponent;

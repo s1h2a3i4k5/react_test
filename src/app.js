@@ -1,8 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
+
 import HeaderComponent from "./components/Header.js";
 import FooterComponent from "./components/Footer.js";
 import Bodycomponent from "./components/Body.js";
+import Aboutcomponent from "./components/About.js";
+import Servicescomponent from "./components/Services.js";
+import Error from "./components/Error.js";
+import ContactComponent from "./components/Contact.js";
+import Restromenucomponent from "./components/Restomenu.js";
+import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom";
+import appstore from "./utilises/appstore.js";
+import Card from "./components/Card.js";
+import { Provider } from "react-redux";
 
 // const HeaderComponent = () => {
 //     return (
@@ -221,11 +231,53 @@ import Bodycomponent from "./components/Body.js";
 const AppComponent = () => {
     return (
         <div className="Container-fluid">
+            <Provider store = {appstore}>
             <HeaderComponent />
-            <Bodycomponent />
+            {/* <Bodycomponent /> */}
+            <Outlet/>
             <FooterComponent />
+            </Provider>
         </div>
     )
-}
+};
+
+const approuter = createBrowserRouter([
+    {
+        path:"/",
+        element:<AppComponent/>,
+        children : [
+            {
+                path:"/",
+                element:<Bodycomponent/>
+                
+            },
+            {
+                path:"/About",
+                element:<Aboutcomponent/>
+                
+            },
+            {
+                path:"/Services",
+                element:<Servicescomponent/>
+            },
+            {
+                path:"/Contact",
+                element:<ContactComponent/>
+            },
+            {
+                path:"/Restromenu/:restroID",//:restroID can be a alphabet or a number
+                element:<Restromenucomponent/>
+            },
+            {
+                path:"/Card",
+                element:<Card></Card>
+            }
+        ],
+        errorElement : <Error/>
+        
+    },
+    
+]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<AppComponent />);
+//root.render(<AppComponent />);
+root.render(<RouterProvider router={approuter}/>)
